@@ -102,13 +102,14 @@
             android:layout_marginBottom="8dp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
         <ProgressBar
             android:id="@+id/pbLoading_cari_angkot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:visibility="visible"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 
