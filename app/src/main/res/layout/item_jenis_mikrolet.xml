@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/card_view"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="4dp"
+	android:orientation="horizontal">
+
+<!--<LinearLayout-->
+	<!--android:layout_width=""-->
+	<!--android:layout_height=""></LinearLayout>-->
+
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:background="@color/colorPrimary"
+		android:orientation="vertical">
+
+		<ImageView
+			android:id="@+id/image_car"
+			android:layout_width="65dp"
+			android:layout_height="65dp"
+			android:layout_marginBottom="8dp"
+			android:layout_marginTop="8dp"
+			android:src="@drawable/car"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			android:layout_marginLeft="16dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintVertical_bias="1.0" />
+
+		<TextView
+			android:id="@+id/text_jenis_meikrolet1"
+			android:layout_width="278dp"
+			android:layout_height="34dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="16dp"
+			android:gravity="center_horizontal"
+			android:text="ABG"
+			android:textColor="#FFFFFF"
+			android:textSize="24dp"
+			android:textStyle="bold"
+			app:layout_constraintLeft_toRightOf="@+id/image_car"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_constraintLeft_creator="1"
+			tools:layout_constraintRight_creator="1"
+			tools:layout_constraintTop_creator="1"
+			app:layout_constraintHorizontal_bias="0.52" />
+
+		<TextView
+			android:id="@+id/text_jenis_meikrolet2"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			android:layout_marginStart="8dp"
+			android:gravity="center"
+			android:text="Arjosati - Borobudur - Gadang"
+			android:textColor="@android:color/white"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toRightOf="@+id/image_car"
+			app:layout_constraintRight_toRightOf="parent"
+			tools:layout_constraintBottom_creator="1"
+			tools:layout_constraintLeft_creator="1"
+			tools:layout_constraintRight_creator="1"
+			app:layout_constraintHorizontal_bias="0.0" />
+	</android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MikroletMalang</string>
+    <string name="title_activity_jenis_angkot">Jenis Angkot</string>
+    <string name="title_activity_pencarian_rute">Pencarian Rute</string>
+    <string name="title_activity_help">help</string>
+    <string name="title_activity_about">about</string>
+    <string name="mikrolet_malang">MIKROLET MALANG</string>
+    <string name="imdad_rabbani">IMDAD RABBANI</string>
+    <string name="teknik_informatika">TEKNIK INFORMATIKA</string>
+    <string name="uin_maulana_malik_ibrahim">UIN MAULANA MALIK IBRAHIM</string>
+    <string name="malang">MALANG</string>
+    <string name="title_activity_detail_jenis">Detail Jenis</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="help_jenisMikrolet">Pada menu awal, anda akan menemukan tombol dengan gambar angkot seperti ini. Meni ini berfungsi untuk memberikan informasi mengenai jenis mikrolet yang ada di malang. Ada beberapa pilihan mikrolet nantinya setelah masuk kedalam menu ini dan setiap jenis mikrolet akan menampilkan jalur trayek yang dilewati</string>
+    <string name="help_rekomendasiMikrolet">Pada menu ini diminta untuk memasukkan jalan yang menjadi tujuan anda. Setelah itu system akan memberikan rekomendasi rute alternatif angkutan umum yang sesuai dengan kemauan user serta akan menampilkan trayek angkutan umumnya</string>
+    <string name="help_petunjukPengguna">Pada menu ini, Applikasi akan memberikan informasi petunjuk penggunaan dalam mengoperasikan applikasi ini</string>
+    <string name="help_tentangAplikasi">Pada Menu ini berfungsi untuk menampilkan tentang seputar pengembangan aplikasi ini</string>
+    <string name="help_menu_jenis_mikrolet">MENU - JENIS MIKROLET</string>
+    <string name="help_menu_rekomendasi_mikrolet">MENU - REKOMENDASI MIKROLET</string>
+    <string name="help_menu_petunjuk_penggunaan">MENU - PETUNJUK PENGGUNAAN</string>
+    <string name="help_menu_tentang_aplikasi">MENU - TENTANG APLIKASI</string>
+
+    <!--trayek mikrolet-->
+    <string name="trayek_al">"Terminal Arjosari – Jl. R. Panji Suroso – Jl. Laksda Adi Sucipto – Jl. Tenaga – Jl. Karya Timur – Jl. Mahakam – Jl. W. R. Supratman – Jl. Panglima Sudirman – Jl. Patimura – Jl. Trunojoyo – Jl. Kertanegara – Jl. Tugu – Jl. Kahuripan – Jl. Semeru – Jl. Ijen – Jl. Retawu – Jl. Bondowoso – Jl. Jombang – Jl. Suroboyo – Jl. Jakarta – Jl. Bogor –  Jl. Veteran – Jl. Gajayana – Jl MT Haryono - Jl. Tlogomas - Terminal Landung Sari"</string>
+    <string name="trayek_lg">Terminal Landungsari – Jl. Tlogomas – Jl. MT Haryono – Jl Gajayana – Jl. Bendungan Sutami – Jl. Surabaya - Jl. Bondowoso – Jl. Gading – Jl. Wilis – Jl. Panderman – Jl. AR Hakim – Jl. Merdeka Utara – Jl Merdeka Timur – Jl. Sukarjowiryopranoto – Jl. Sultan  Syahrir – Jl. Kyai Tamin – Jl. Sartono SH – Jl. Peltu Sujono – Jl. Susanto – Jl. Niaga – Jl. Sonokeling – Jl. Janti – Jl. S. Supriyadi – Jl. Satsuit Tubun – Terminal Gadang</string>
+    <string name="trayek_ag">Terminal Arjosari – Jl. R. Panji Suroso – Jl. Raden Intan – Jl. Jend A. Yani – Jl. Letjen S. Parma – Jl. Letjen Sutuyo – Jl. Jagung Suprapto – Jl. Basuki Rahmat – Merdeka Utara – Jl. Merdeka Timur – Jl. Sukarjowiryor   Panoto – Jl. Pasar Besar – Jl. Sersan Harun – Jl. Prof Moh yamin – Jl. Sartono SH – Jl. Kol Sugiono – Terminal Gadang</string>
+    <string name="title_activity_posisi_pengguna">Posisi Pengguna Activity</string>
+    <string name="title_activity_cari_angkot">Cari Angkot Activity</string>
+    <string name="jenis_mikrolet_malang">Jenis Mikrolet Malang</string>
+    <string name="text_screen">Mikrolet Malang</string>
+
+    <!--<string name="url_kml">http://www.google.com/maps/d/kml?forcekml=1&mid=14vAcJsV3l9hx1x6LTk7YuzmgviY</string>-->
+
+</resources>

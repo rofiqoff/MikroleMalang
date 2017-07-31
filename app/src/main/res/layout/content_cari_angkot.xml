@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="#cfd8dc"
+    tools:context="com.example.whitehat.mikroletmalang.pencarian.CariAngkotActivity"
+    tools:showIn="@layout/activity_cari_angkot">
+
+    <LinearLayout
+        android:id="@+id/linear_cari"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_add_location_24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edit_text_posisi_awal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Input Tempat Awal"
+                android:gravity="center"
+                android:singleLine="true"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"
+                android:imeOptions="actionNext"/>
+
+            <EditText
+                android:id="@+id/edit_text_posisi_akhir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Input Tujuan"
+                android:singleLine="true"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:imeOptions="actionSearch"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/cari_angkot_tujuan"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_search_24dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/linear_cari"/>
+
+    <RelativeLayout
+        android:id="@+id/linear_hasil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:id="@+id/hasil_tujuan_angkot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anda disarankan menggunakan : AL "
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"/>
+
+        <ProgressBar
+            android:id="@+id/pbLoading_cari_angkot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/linear_hasil"/>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map_cari_angkot"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view2" />
+
+</RelativeLayout>
