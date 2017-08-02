@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +26,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by whitehat on 04/05/17.
@@ -59,22 +60,19 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_jenis_angkot,parent,false);
+        View view = inflater.inflate(R.layout.item_jenis_angkot, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position)
-    {
-//        holder.imageAngkot.setImageResource(modelJenisAngkots.get(position).getImageangkot());
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.namaMikrolet1.setText(modelJenisAngkots.get(position).getNamaAngkot1());
         holder.namaMikrolet2.setText(modelJenisAngkots.get(position).getNamaAngkot2());
 
         Glide.with(activity)
                 .load(Helper.BASE_URL + modelJenisAngkots.get(position).getImageangkot())
-                .crossFade()
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(activity.getResources().getColor(R.color.bg_layout))
                 .into(holder.imageAngkot);
 
         holder.container.setOnClickListener(
@@ -88,17 +86,21 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
                         String sNamaMikrolet2 = modelJenisAngkots.get(position).getNamaAngkot2();
                         String getNama = (String) holder.namaMikrolet1.getText();
                         int dataRaw = 0;
+                        String namaAngkot = "";
 
-                        if (getNama.equalsIgnoreCase("AL")){
+                        if (getNama.equalsIgnoreCase("AL")) {
                             DataAL();
+                            namaAngkot = "AL";
                             sTrak = activity.getString(R.string.trayek_al);
                             dataRaw = R.raw.angkutanal;
                         } else if (getNama.equalsIgnoreCase("AG")) {
                             DataAG();
+                            namaAngkot = "AG";
                             sTrak = activity.getString(R.string.trayek_ag);
                             dataRaw = R.raw.angkutanag;
                         } else if (getNama.equalsIgnoreCase("LG")) {
                             DataLG();
+                            namaAngkot = "LG";
                             sTrak = activity.getString(R.string.trayek_lg);
                             dataRaw = R.raw.angkutanlg;
                         }
@@ -111,8 +113,10 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
                         intent.putExtra("longJalur", sLongJalur);
                         intent.putExtra("trayek", sTrak);
                         intent.putExtra("peta", dataRaw);
+                        intent.putExtra("namaAngkot", namaAngkot);
 
                         activity.startActivity(intent);
+                        activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
                     }
                 }
@@ -127,21 +131,21 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView imageAngkot;
+        private CircleImageView imageAngkot;
         private TextView namaMikrolet1;
         private TextView namaMikrolet2;
         private View container;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageAngkot = (ImageView) itemView.findViewById(R.id.imageJenisAngkot);
+            imageAngkot = (CircleImageView) itemView.findViewById(R.id.imageJenisAngkot);
             namaMikrolet1 = (TextView) itemView.findViewById(R.id.textJenisAngkot);
             namaMikrolet2 = (TextView) itemView.findViewById(R.id.textJenisAngkot2);
             container = itemView.findViewById(R.id.cardviewJenisAngkot);
         }
     }
 
-    private void DataAL(){
+    private void DataAL() {
         String url = Helper.BASE_URL + "tampil-data-al.php";
         Map<String, String> param = new HashMap();
 
@@ -155,18 +159,18 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
 
         aQuery = new AQuery(activity);
         try {
-            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>(){
+            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>() {
                 @Override
                 public void callback(String url, String object, AjaxStatus status) {
-                    if (object != null){
+                    if (object != null) {
                         try {
                             JSONObject jsonObject = new JSONObject(object);
                             String result = jsonObject.getString("result");
                             String msg = jsonObject.getString("msg");
 
-                            if (result.equalsIgnoreCase("true")){
+                            if (result.equalsIgnoreCase("true")) {
                                 JSONArray jsonArray = jsonObject.getJSONArray("mikrolet_al");
-                                for (int a = 0; a < jsonArray.length(); a++){
+                                for (int a = 0; a < jsonArray.length(); a++) {
                                     JSONObject object1 = jsonArray.getJSONObject(a);
 
                                     sNodeJalur = object1.getString("node_jalur");
@@ -184,12 +188,12 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
                     }
                 }
             });
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void DataAG(){
+    private void DataAG() {
         String url = Helper.BASE_URL + "tampil-data-ag.php";
         Map<String, String> param = new HashMap();
 
@@ -203,18 +207,18 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
 
         aQuery = new AQuery(activity);
         try {
-            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>(){
+            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>() {
                 @Override
                 public void callback(String url, String object, AjaxStatus status) {
-                    if (object != null){
+                    if (object != null) {
                         try {
                             JSONObject jsonObject = new JSONObject(object);
                             String result = jsonObject.getString("result");
                             String msg = jsonObject.getString("msg");
 
-                            if (result.equalsIgnoreCase("true")){
+                            if (result.equalsIgnoreCase("true")) {
                                 JSONArray jsonArray = jsonObject.getJSONArray("mikrolet_ag");
-                                for (int a = 0; a < jsonArray.length(); a++){
+                                for (int a = 0; a < jsonArray.length(); a++) {
                                     JSONObject object1 = jsonArray.getJSONObject(a);
 
                                     sNodeJalur = object1.getString("node_jalur");
@@ -232,12 +236,12 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
                     }
                 }
             });
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void DataLG(){
+    private void DataLG() {
         String url = Helper.BASE_URL + "tampil-data-lg.php";
         Map<String, String> param = new HashMap();
 
@@ -251,18 +255,18 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
 
         aQuery = new AQuery(activity);
         try {
-            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>(){
+            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>() {
                 @Override
                 public void callback(String url, String object, AjaxStatus status) {
-                    if (object != null){
+                    if (object != null) {
                         try {
                             JSONObject jsonObject = new JSONObject(object);
                             String result = jsonObject.getString("result");
                             String msg = jsonObject.getString("msg");
 
-                            if (result.equalsIgnoreCase("true")){
+                            if (result.equalsIgnoreCase("true")) {
                                 JSONArray jsonArray = jsonObject.getJSONArray("mikrolet_lg");
-                                for (int a = 0; a < jsonArray.length(); a++){
+                                for (int a = 0; a < jsonArray.length(); a++) {
                                     JSONObject object1 = jsonArray.getJSONObject(a);
 
                                     sNodeJalur = object1.getString("node_jalur");
@@ -280,7 +284,7 @@ public class RecycleviewAdapterJenisAngkot extends RecyclerView.Adapter<Recyclev
                     }
                 }
             });
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

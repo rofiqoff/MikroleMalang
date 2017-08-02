@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardviewJenisAngkot"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="8dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginBottom="1dp"
+    app:cardBackgroundColor="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageJenisAngkot"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/car"
+            app:civ_fill_color="@color/bg_layout"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageJenisAngkot"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="8dp"
-                android:src="@drawable/car" />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/textJenisAngkot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="0dp"
-                android:background="@color/colorPrimary">
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="AL"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textJenisAngkot"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="AL"
-                    android:fontFamily="monospace"
-                    android:textColor="@android:color/white"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:layout_marginTop="8dp" />
-                <TextView
-                    android:id="@+id/textJenisAngkot2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="(Arjosari - Landungsari)"
-                    android:textColor="@android:color/white"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:layout_marginBottom="16dp"/>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/textJenisAngkot2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="(Arjosari - Landungsari)"
+                android:textColor="@android:color/white"
+                android:textStyle="normal"
+                android:textSize="12sp"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -1,15 +1,12 @@
 package com.example.whitehat.mikroletmalang.angkot;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.MenuItem;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -18,7 +15,6 @@ import com.example.whitehat.mikroletmalang.R;
 import com.example.whitehat.mikroletmalang.angkot.adapter.RecycleviewAdapterJenisAngkot;
 import com.example.whitehat.mikroletmalang.angkot.database.Helper;
 import com.example.whitehat.mikroletmalang.angkot.database.ModelJenisAngkot;
-import com.example.whitehat.mikroletmalang.angkot.detail.DetailJenis;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +39,7 @@ public class JenisAngkot extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Mikrolet Malang");
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleview_angkot);
         model = new ArrayList<>();
@@ -54,6 +51,16 @@ public class JenisAngkot extends AppCompatActivity {
 
         setdata();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setdata()
@@ -108,15 +115,6 @@ public class JenisAngkot extends AppCompatActivity {
         } catch (Exception e){
             e.printStackTrace();
         }
-
-//
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletal,"AL","(Arjosari-Landungsari)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletlg,"LG","(Landungsari-Gadang)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletag,"AG","(Arjosari-Gadang)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikrolettsg,"TSG","(Tawangwangu-Soekarno Hatta-Gasek)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletadl,"ADL","(Arjosari-Dinoyo-Landungsari)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletabg,"ABG","(Arjosari-Borobudur-Gadang)"));
-//        model.add(new ModelJenisAngkot(R.drawable.mikroletamg,"AMG","(Arjosari-Mergosono-Gadang)"));
     }
 
 }

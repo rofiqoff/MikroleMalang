@@ -9,33 +9,39 @@
     tools:context="com.example.whitehat.mikroletmalang.angkot.detail.DetailJenis"
     tools:showIn="@layout/activity_detail_jenis">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_detail_jenis"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:src="@drawable/car"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/image_logo_desc"
+        android:src="@drawable/car"
+        app:civ_fill_color="@color/bg_layout"/>
 
     <TextView
         android:id="@+id/text_jenis_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Arjosari - Landungsari"
-        android:gravity="center"
         android:layout_below="@id/image_detail_jenis"
         android:layout_margin="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Arjosari - Landungsari" />
 
     <TextView
         android:id="@+id/text_trayek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Trayek"
-        android:padding="8dp"
-        android:background="@android:color/white"
         android:layout_below="@id/text_jenis_detail"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:background="@android:color/white"
+        android:fontFamily="sans-serif"
+        android:padding="8dp"
+        android:text="Trayek"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textJalur"
@@ -43,14 +49,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_trayek"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif"
         android:gravity="top"
+        android:padding="8dp"
+        tools:text="Jalan Raya"
         android:textColor="@android:color/white"
-        android:text="Jalan Raya"
-        android:padding="8dp"/>
+        android:textSize="12sp" />
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map_detail_jenis"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"

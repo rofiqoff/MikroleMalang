@@ -13,12 +13,12 @@
         android:id="@+id/linear_cari"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
         android:orientation="horizontal"
-        android:layout_alignParentTop="true">
+        android:background="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:padding="4dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -32,18 +32,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Input Tujuan"
+            android:hint="Tujuan"
             android:gravity="center"
             android:singleLine="true"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="normal"
             android:textColor="@android:color/white"
             android:imeOptions="actionSearch"/>
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="#455a64"/>
 
         <ImageView
             android:id="@+id/cari_posisi_pengguna"
@@ -58,10 +65,8 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_height="0.5dp"
+        android:background="#455a64"
         android:layout_below="@id/linear_cari"/>
 
     <RelativeLayout
@@ -69,15 +74,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/view"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
+        android:background="@android:color/white"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/hasil_tujuan_pengguna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Anda disarankan menggunakan : "
-            android:textSize="18sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="4dp"
+            android:layout_centerHorizontal="true"
             android:visibility="gone"/>
 
         <ProgressBar
@@ -92,9 +104,7 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
+        android:background="#455a64"
         android:layout_below="@id/linear_hasil"/>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

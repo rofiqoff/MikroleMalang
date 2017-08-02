@@ -3,6 +3,7 @@ package com.example.whitehat.mikroletmalang.angkot.detail;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,14 +51,17 @@ public class DetailJenis extends AppCompatActivity implements OnMapReadyCallback
 
         bundle = getIntent().getExtras();
 
+        String namaAngkot = "Angkot "+bundle.getString("namaAngkot");
+
         textTrayek.setText(bundle.getString("trayek"));
         mNama.setText(bundle.getString("nama2"));
         String sGambar = bundle.getString("gambar");
 
+        getSupportActionBar().setTitle(namaAngkot);
+
         Glide.with(this)
                 .load(Helper.BASE_URL + sGambar)
-                .crossFade()
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(getResources().getColor(R.color.bg_layout))
                 .into(mGambar);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -66,10 +70,20 @@ public class DetailJenis extends AppCompatActivity implements OnMapReadyCallback
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        double lat = -7.9706891;
-        double lng = 112.6017688;
+        double lat = -7.982449;
+        double lng = 112.630712;
         int zoom = 13;
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), zoom);

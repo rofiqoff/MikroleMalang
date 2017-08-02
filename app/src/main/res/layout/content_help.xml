@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.whitehat.mikroletmalang.help.Help"
     tools:showIn="@layout/activity_help">
@@ -25,18 +26,19 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/car"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="16dp"
+                    android:contentDescription="@string/image_logo_desc"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center|left"
+                    android:gravity="center|start"
                     android:text="@string/help_menu_jenis_mikrolet"
                     android:fontFamily="sans-serif-condensed"
-                    android:textSize="18dp"
+                    android:textSize="14sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -61,18 +63,19 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/search"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="16dp"
+                    android:contentDescription="@string/image_logo_desc"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center|left"
+                    android:gravity="center|start"
                     android:text="@string/help_menu_rekomendasi_mikrolet"
                     android:fontFamily="sans-serif-condensed"
-                    android:textSize="18dp"
+                    android:textSize="14sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -97,24 +100,23 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/paper"
                     android:layout_margin="16dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center|left"
+                    android:gravity="center|start"
                     android:text="@string/help_menu_petunjuk_penggunaan"
                     android:fontFamily="sans-serif-condensed"
-                    android:textSize="18dp"
+                    android:textSize="14sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -129,23 +131,24 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#cfd8dc"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/man"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="16dp"
+                    android:contentDescription="@string/image_logo_desc"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center|left"
+                    android:gravity="center|start"
                     android:text="@string/help_menu_tentang_aplikasi"
                     android:fontFamily="sans-serif-condensed"
-                    android:textSize="18dp"
+                    android:textSize="14sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
             </LinearLayout>

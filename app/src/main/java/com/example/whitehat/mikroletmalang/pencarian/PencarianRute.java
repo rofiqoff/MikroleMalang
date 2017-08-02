@@ -2,10 +2,9 @@ package com.example.whitehat.mikroletmalang.pencarian;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -31,6 +30,7 @@ public class PencarianRute extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PencarianRute.this, PosisiPenggunaActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -38,8 +38,19 @@ public class PencarianRute extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PencarianRute.this, CariAngkotActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

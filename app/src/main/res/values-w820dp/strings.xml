@@ -2,4 +2,7 @@
 <resources>
     <string name="jenis_mikrolet_malang">Jenis Mikrolet Malang</string>
     <string name="text_screen">Mikrolet Malang</string>
+    <string name="image_menu_desc">image menu desc</string>
+    <string name="image_logo_desc">image logo desc</string>
+    <string name="image_foto_desc">image foto desc</string>
 </resources>

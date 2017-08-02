@@ -1,89 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#cfd8dc">
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.whitehat.mikroletmalang.MainActivity">
 
-  <include
-      layout="@layout/toolbar"
-      android:id="@+id/include" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="209dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/logo"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/include"
+        android:background="#cfd8dc">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MIKROLET MALANG"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:fontFamily="sans-serif-condensed"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/image_angkot"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/car"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="134dp"
+                android:layout_height="134dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/image_logo_desc"
+                app:srcCompat="@drawable/logo" />
 
-    <ImageView
-        android:id="@+id/image_search"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/search"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginRight="24dp"
-        app:layout_constraintRight_toRightOf="parent" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif"
+                android:text="MIKROLET MALANG"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/image_help"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_angkot"
-        app:srcCompat="@drawable/paper" />
+            <LinearLayout
+                android:id="@+id/ln_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_marginTop="42dp"
+                android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/image_about"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_search"
-        app:srcCompat="@drawable/man" />
+                <ImageView
+                    android:id="@+id/image_angkot"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image_menu_desc"
+                    app:srcCompat="@drawable/car" />
 
+                <ImageView
+                    android:id="@+id/image_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image_menu_desc"
+                    app:srcCompat="@drawable/search" />
 
-</android.support.constraint.ConstraintLayout>
-</ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ln_1"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image_menu_desc"
+                    app:srcCompat="@drawable/paper" />
+
+                <ImageView
+                    android:id="@+id/image_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image_menu_desc"
+                    app:srcCompat="@drawable/man" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
