@@ -1,0 +1,59 @@
+=> menentukan titik awal :
+
+start
+click lokasiAwal
+write lokasiAwal
+read lokasiAwal
+end
+
+
+=> menentukan titik tujuan :
+
+start
+click lokasiAkhir
+write lokasiAkhir
+read lokasiAkhir
+end
+
+
+=> event klik search :
+
+start
+read lokasiAwal
+read lokasiAkhir
+read lokasiJalur
+if markerAwal != null Then
+	read latitude lokasiAwal
+	read longitude lokasiAwal
+	set markerAwal
+
+if markerAkhir != null Then
+	read latitude lokasiAkhir
+	read longitude lokasiAkhir
+	set markerAkhir
+
+if lokasiAwal = lokasiJalur Then
+	if kodeMikrolet = M1 Then
+		read namaMikrolet = AL
+	if kodeMikrolet = M2 Then
+		read namaMikrolet = LG
+	if kodeMikrolet = M3 Then
+		read namaMikrolet = AG
+
+if lokasiAkhir = lokasiJalur Then
+	if kodeMikrolet = M1 Then
+		read namaMikrolet = AL
+	if kodeMikrolet = M2 Then
+		read namaMikrolet = LG
+	if kodeMikrolet = M3 Then
+		read namaMikrolet = AG
+
+if jarakLokasi <= 500 Then
+	if kodeMikrolet = M1 Then
+		read namaMikrolet = AL
+	if kodeMikrolet = M2 Then
+		read namaMikrolet = LG
+	if kodeMikrolet = M3 Then
+		read namaMikrolet = AG
+
+
