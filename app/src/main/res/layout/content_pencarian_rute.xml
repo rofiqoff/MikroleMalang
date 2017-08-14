@@ -12,50 +12,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/posisi_pengguna"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/by_posisi_pengguna"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:drawablePadding="16dp"
+            android:drawableTop="@drawable/ic_my_location_24dp"
+            android:gravity="center"
+            android:text="@string/text_posisi_pengguna" />
 
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_my_location_24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Posisi Pengguna"
-                android:layout_gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/cari_angkot"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/by_input_lokasi"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_map_24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cari Angkot"
-                android:layout_gravity="center"/>
-
-        </LinearLayout>
+            android:layout_weight="1"
+            android:drawablePadding="16dp"
+            android:drawableTop="@drawable/ic_map_24dp"
+            android:gravity="center"
+            android:text="@string/text_cari_angkot" />
 
     </LinearLayout>
 

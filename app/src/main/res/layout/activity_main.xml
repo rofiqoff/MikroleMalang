@@ -36,7 +36,7 @@
                 android:layout_below="@id/imageView"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="sans-serif"
-                android:text="MIKROLET MALANG"
+                android:text="@string/text_mikrolet_malang"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
