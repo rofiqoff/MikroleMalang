@@ -1,5 +1,6 @@
 package com.example.whitehat.mikroletmalang.pencarian;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -9,9 +10,9 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,7 +26,12 @@ import com.example.whitehat.mikroletmalang.angkot.database.model.AngkotLGModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkotModel;
 import com.example.whitehat.mikroletmalang.pencarian.geolocation.GeocoderIntentService;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +39,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.kml.KmlLayer;
 
@@ -53,8 +60,8 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
     private KmlLayer kmlLayer;
     private APIService apiService;
 
-    private EditText tujuanAwal;
-    private EditText tujuanAkhir;
+    private TextView posisiAwal;
+    private TextView posisiAkhir;
     private ImageView cariAngkot;
     private TextView textHasil;
     private ProgressBar progressBar;
@@ -65,12 +72,45 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
     private int PLACE_PICKER_REQUEST = 1;
     private GeocoderIntentService geocoderReceiver;
 
-
+    public static final int CODE_PLACE_AWAL = 1;
+    public static final int CODE_PLACE_AKHIR = 2;
 
     ArrayList<AngkotALModel.MikroletAl> al = new ArrayList<>();
     ArrayList<AngkotAGModel.MikroletAG> ag = new ArrayList<>();
     ArrayList<AngkotLGModel.MikroletLG> lg = new ArrayList<>();
     ArrayList<JalurAngkotModel.JalurAngkot> jalur = new ArrayList<>();
+
+//    koordinat AL
+    float latAlAwal, longAlAwal, latAlAkhir, longAlAkhir;
+
+//    koordinat AG
+    float latAgAwal, longAgAwal, latAgAkhir, longAgAkhir;
+
+//    koordinat LG
+    float latLgAwal, longLgAwal, latLgAkhir, longLgAkhir;
+
+    float latJalur, longJalur;
+    LatLng latLngTujuan, latLngAwal;
+
+    Address addressAwal, addressAkhir;
+
+    Location locationAwalAL = new Location("lokasi Awal Al");
+    Location locationAkhirAL = new Location("lokasi Akhir Al");
+
+    Location locationAwalAG = new Location("lokasi Awal AG");
+    Location locationAkhirAG = new Location("lokasi Akhir AG");
+
+    Location locationAwalLG = new Location("lokasi Awal LG");
+    Location locationAkhirLG = new Location("lokasi Akhir LG");
+
+    Location locationAwal = new Location("lokasi Awal");
+    Location locationAkhir = new Location("lokasi Akhir");
+
+    Location locationJalur = new Location("lokasi Jalur");
+
+    String kodeMikrolet, namaMikrolet;
+
+    Marker markerAwal, markerTujuan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,27 +120,33 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        tujuanAwal = (EditText) findViewById(R.id.edit_text_posisi_awal);
-        tujuanAkhir = (EditText) findViewById(R.id.edit_text_posisi_akhir);
+        posisiAwal = (TextView) findViewById(R.id.text_posisi_awal);
+        posisiAkhir = (TextView) findViewById(R.id.text_posisi_akhir);
         cariAngkot = (ImageView) findViewById(R.id.cari_angkot_tujuan);
         textHasil = (TextView) findViewById(R.id.hasil_tujuan_angkot);
         progressBar = (ProgressBar) findViewById(R.id.pbLoading_cari_angkot);
 
         cariAngkot.setOnClickListener(this);
+        posisiAwal.setOnClickListener(this);
+        posisiAkhir.setOnClickListener(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_cari_angkot);
         mapFragment.getMapAsync(this);
 
         apiService = APIService.Factory.create();
-
         geocoderReceiver = new GeocoderIntentService();
+
+        jalurAngkot();
+        getAngkotAL();
+        getAngkotAG();
+        getAngkotLG();
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -118,7 +164,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         double lng = 112.630712;
         int zoom = 14;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), zoom);
                 mGoogleMap.moveCamera(cameraUpdate);
@@ -170,7 +216,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void getAngkotAL(){
+    public void getAngkotAL() {
         Call<AngkotALModel> angkotAL = apiService.getAngkotAl();
         angkotAL.enqueue(new Callback<AngkotALModel>() {
             @Override
@@ -185,7 +231,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    public void getAngkotLG(){
+    public void getAngkotLG() {
         Call<AngkotLGModel> angkotLG = apiService.getAngkotLG();
         angkotLG.enqueue(new Callback<AngkotLGModel>() {
             @Override
@@ -200,7 +246,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    public void getAngkotAG(){
+    public void getAngkotAG() {
         Call<AngkotAGModel> angkotAG = apiService.getAngkotAG();
         angkotAG.enqueue(new Callback<AngkotAGModel>() {
             @Override
@@ -215,7 +261,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         });
     }
 
-    public void jalurAngkot(){
+    public void jalurAngkot() {
         Call<JalurAngkotModel> jalurAngkot = apiService.jalurAngkot();
         jalurAngkot.enqueue(new Callback<JalurAngkotModel>() {
             @Override
@@ -247,62 +293,184 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        if (tujuanAwal.getText().toString().equals("") && tujuanAkhir.getText().toString().equals("")){
-            Toast.makeText(CariAngkotActivity.this, "Titik Awal dan Titik Akhir harus diisi terlebih dahulu", Toast.LENGTH_SHORT).show();
-        } else if (tujuanAwal.getText().toString().equals("")){
-            Toast.makeText(CariAngkotActivity.this, "Titik Awal harus diisi", Toast.LENGTH_SHORT).show();
-        } else if (tujuanAkhir.getText().toString().equals("")){
-            Toast.makeText(CariAngkotActivity.this, "Titik Akhir harus diisi", Toast.LENGTH_SHORT).show();
-        } else {
-            titikAwal();
-            titikTujan();
-            tujuanAwal.setText("");
-            tujuanAkhir.setText("");
+        if (v == posisiAwal) {
+            findPlaceAwal();
+        } else if (v == posisiAkhir) {
+            findPlaceTujuan();
+        } else if (v == cariAngkot) {
+
+            if (posisiAwal.getText().toString().equals("") && posisiAkhir.getText().toString().equals("")) {
+                Toast.makeText(CariAngkotActivity.this, "Titik Awal dan Titik Akhir harus diisi terlebih dahulu", Toast.LENGTH_SHORT).show();
+            } else if (posisiAwal.getText().toString().equals("")) {
+                Toast.makeText(CariAngkotActivity.this, "Titik Awal harus diisi", Toast.LENGTH_SHORT).show();
+            } else if (posisiAkhir.getText().toString().equals("")) {
+                Toast.makeText(CariAngkotActivity.this, "Titik Akhir harus diisi", Toast.LENGTH_SHORT).show();
+            } else {
+                titikAwal();
+                titikTujan();
+//                searchAngkot();
+                posisiAwal.setText("");
+                posisiAkhir.setText("");
+            }
+
         }
     }
 
-    public void titikAwal(){
-        String locationAwal = tujuanAwal.getText().toString();
+    public void titikAwal() {
+        if (markerAwal != null){
+            markerAwal.remove();
+        }
+
+        String locationAwal = posisiAwal.getText().toString();
         List<Address> addressList = null;
-        if (locationAwal != null || !locationAwal.equals("")){
+        if (locationAwal != null || !locationAwal.equals("")) {
             Geocoder geocoder = new Geocoder(getApplicationContext());
             try {
-                addressList = geocoder.getFromLocationName(locationAwal, 1);
+                addressList = geocoder.getFromLocationName(locationAwal, CODE_PLACE_AWAL);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            addressAwal = addressList.get(0);
+            latLngAwal = new LatLng(addressAwal.getLatitude(), addressAwal.getLongitude());
             MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
+            markerOptions.position(latLngAwal);
             markerOptions.title(locationAwal);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-            mGoogleMap.addMarker(markerOptions);
-            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            markerAwal = mGoogleMap.addMarker(markerOptions);
+            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLngAwal));
         }
     }
 
-    public void titikTujan(){
-        String locationTujuan = tujuanAkhir.getText().toString();
+    public void titikTujan() {
+
+        if (markerTujuan != null){
+            markerTujuan.remove();
+        }
+        String locationTujuan = posisiAkhir.getText().toString();
         List<Address> addressList = null;
-        if (locationTujuan != null || !locationTujuan.equals("")){
+        if (locationTujuan != null || !locationTujuan.equals("")) {
             Geocoder geocoder = new Geocoder(getApplicationContext());
             try {
-                addressList = geocoder.getFromLocationName(locationTujuan, 1);
+                addressList = geocoder.getFromLocationName(locationTujuan, CODE_PLACE_AKHIR);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            addressAkhir = addressList.get(0);
+            latLngTujuan = new LatLng(addressAkhir.getLatitude(), addressAkhir.getLongitude());
             MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
+            markerOptions.position(latLngTujuan);
             markerOptions.title(locationTujuan);
-            mGoogleMap.addMarker(new MarkerOptions()
-                    .position(latLng))
-                    .setTitle(locationTujuan);
+            markerTujuan = mGoogleMap.addMarker(markerOptions);
 //            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
     }
+
+    public void findPlaceAwal() {
+        try {
+            Intent intent =
+                    new PlaceAutocomplete
+                            .IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                            .build(this);
+            startActivityForResult(intent, CODE_PLACE_AWAL);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void findPlaceTujuan(){
+        try {
+            Intent intent = new PlaceAutocomplete
+                    .IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                    .build(this);
+            startActivityForResult(intent, CODE_PLACE_AKHIR);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_PLACE_AWAL) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                Log.e("TAG", "Place: " + place.getAddress() + place.getPhoneNumber());
+
+                posisiAwal.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                Log.e("TAG", status.getStatusMessage());
+            } else if (resultCode == RESULT_CANCELED) {
+
+            }
+        } if (requestCode == CODE_PLACE_AKHIR) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                Log.e("TAG", "Place: " + place.getAddress() + place.getPhoneNumber());
+
+                posisiAkhir.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                Log.e("TAG", status.getStatusMessage());
+            } else if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
+    }
+
+    public void searchAngkot(){
+
+        locationAwal.setLatitude(addressAwal.getLatitude());
+        locationAwal.setLongitude(addressAwal.getLongitude());
+
+        locationAkhir.setLatitude(addressAkhir.getLatitude());
+        locationAkhir.setLongitude(addressAkhir.getLongitude());
+
+        for (int i = 0; i <= jalur.size(); i++){
+            latJalur = Float.parseFloat(jalur.get(i).getLat_jalur());
+            longJalur = Float.parseFloat(jalur.get(i).getLong_jalur());
+
+            kodeMikrolet = jalur.get(i).getKode_mikrolet();
+
+            locationJalur.setLatitude(latJalur);
+            locationJalur.setLongitude(longJalur);
+
+            float jarakLokasi = locationAwal.distanceTo(locationJalur);
+
+            if (locationJalur == locationAwal){
+                if (kodeMikrolet.equalsIgnoreCase("M1")){
+                    namaMikrolet = "AL";
+                } else if (kodeMikrolet.equalsIgnoreCase("M2")){
+                    namaMikrolet = "LG";
+                } else if (kodeMikrolet.equalsIgnoreCase("M3")){
+                    namaMikrolet = "AG";
+                }
+                Toast.makeText(CariAngkotActivity.this, "Nama Mikrolet 1 : "+namaMikrolet, Toast.LENGTH_SHORT).show();
+            } else if (locationJalur == locationAkhir){
+                if (kodeMikrolet.equalsIgnoreCase("M1")){
+                    namaMikrolet = "AL";
+                } else if (kodeMikrolet.equalsIgnoreCase("M2")){
+                    namaMikrolet = "LG";
+                } else if (kodeMikrolet.equalsIgnoreCase("M3")){
+                    namaMikrolet = "AG";
+                }
+                Toast.makeText(CariAngkotActivity.this, "Nama Mikrolet 2 : "+namaMikrolet, Toast.LENGTH_SHORT).show();
+            } else if (jarakLokasi <= 500){
+                if (kodeMikrolet.equalsIgnoreCase("M1")){
+                    namaMikrolet = "AL";
+                } else if (kodeMikrolet.equalsIgnoreCase("M2")){
+                    namaMikrolet = "LG";
+                } else if (kodeMikrolet.equalsIgnoreCase("M3")){
+                    namaMikrolet = "AG";
+                }
+                Toast.makeText(CariAngkotActivity.this, "Nama Mikrolet 3 : "+namaMikrolet, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

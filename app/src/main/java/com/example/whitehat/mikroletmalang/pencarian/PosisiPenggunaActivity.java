@@ -1,7 +1,10 @@
 package com.example.whitehat.mikroletmalang.pencarian;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,27 +13,40 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.whitehat.mikroletmalang.R;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+
+import static com.example.whitehat.mikroletmalang.pencarian.CariAngkotActivity.CODE_PLACE_AKHIR;
+
 public class PosisiPenggunaActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener{
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, View.OnClickListener{
 
     private GoogleMap mGoogleMap;
 
@@ -40,6 +56,10 @@ public class PosisiPenggunaActivity extends AppCompatActivity implements OnMapRe
     private Location mLastLocation;
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public static final int CODE_PLACE = 1;
+
+    private TextView mTextTujuan;
+    private ImageView mCari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +68,12 @@ public class PosisiPenggunaActivity extends AppCompatActivity implements OnMapRe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mTextTujuan = (TextView) findViewById(R.id.text_tujuan_pengguna);
+        mCari = (ImageView) findViewById(R.id.cari_posisi_pengguna);
+
+        mTextTujuan.setOnClickListener(this);
+        mCari.setOnClickListener(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_posisi_pengguna);
@@ -105,11 +131,11 @@ public class PosisiPenggunaActivity extends AppCompatActivity implements OnMapRe
         }
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-        mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
+//        MarkerOptions markerOptions = new MarkerOptions();
+//        markerOptions.position(latLng);
+//        markerOptions.title("Current Position");
+//        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//        mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
 
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(16));
@@ -178,5 +204,74 @@ public class PosisiPenggunaActivity extends AppCompatActivity implements OnMapRe
                 return;
             }
         }
+    }
+
+    public void titikTujan() {
+        String locationTujuan = mTextTujuan.getText().toString();
+        List<Address> addressList = null;
+        if (locationTujuan != null || !locationTujuan.equals("")) {
+            Geocoder geocoder = new Geocoder(getApplicationContext());
+            try {
+                addressList = geocoder.getFromLocationName(locationTujuan, CODE_PLACE_AKHIR);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(latLng);
+            markerOptions.title(locationTujuan);
+            mGoogleMap.addMarker(new MarkerOptions()
+                    .position(latLng))
+                    .setTitle(locationTujuan);
+            mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+    }
+
+    public void findPlace(){
+        try {
+            Intent intent =
+                    new PlaceAutocomplete
+                            .IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                            .build(this);
+            startActivityForResult(intent, CODE_PLACE);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_PLACE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                Log.e("TAG", "Place: " + place.getAddress() + place.getPhoneNumber());
+
+                mTextTujuan.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                Log.e("TAG", status.getStatusMessage());
+            } else if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mTextTujuan){
+            findPlace();
+        } if (v == mCari){
+            if (mTextTujuan.getText().toString().equals("")) {
+                Toast.makeText(PosisiPenggunaActivity.this, "Silahkan pilih tujuan anda", Toast.LENGTH_SHORT).show();
+            } else {
+                titikTujan();
+                mTextTujuan.setText("");
+            }
+        }
+
     }
 }

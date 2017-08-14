@@ -45,6 +45,7 @@ public class AngkotALModel {
         String long_awal;
         String node_jalur_akhir;
         String lat_akhir;
+        String long_akhir;
         String node_jalur;
         String lat_jalur;
         String long_jalur;
@@ -121,6 +122,14 @@ public class AngkotALModel {
             this.lat_akhir = lat_akhir;
         }
 
+        public String getLong_akhir() {
+            return long_akhir;
+        }
+
+        public void setLong_akhir(String long_akhir) {
+            this.long_akhir = long_akhir;
+        }
+
         public String getNode_jalur() {
             return node_jalur;
         }
@@ -144,5 +153,7 @@ public class AngkotALModel {
         public void setLong_jalur(String long_jalur) {
             this.long_jalur = long_jalur;
         }
+
+
     }
 }

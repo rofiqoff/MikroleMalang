@@ -6,14 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.whitehat.mikroletmalang.R;
 
 public class PencarianRute extends AppCompatActivity {
 
-    private LinearLayout posisi_pengguna;
-    private LinearLayout cari_angkot;
+    private TextView posisi_pengguna;
+    private TextView cari_angkot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +23,8 @@ public class PencarianRute extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        posisi_pengguna = (LinearLayout) findViewById(R.id.posisi_pengguna);
-        cari_angkot = (LinearLayout) findViewById(R.id.cari_angkot);
+        posisi_pengguna = (TextView) findViewById(R.id.by_posisi_pengguna);
+        cari_angkot = (TextView) findViewById(R.id.by_input_lokasi);
 
         posisi_pengguna.setOnClickListener(new View.OnClickListener() {
             @Override
