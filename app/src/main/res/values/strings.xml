@@ -31,6 +31,15 @@
     <string name="image_menu_desc">image menu desc</string>
     <string name="image_logo_desc">image logo desc</string>
     <string name="image_foto_desc">image foto desc</string>
+    <string name="text_tempat_awal">Tempat Awal</string>
+    <string name="text_tujuan">Tujuan</string>
+    <string name="image_icon_desc">image icon desc</string>
+    <string name="text_trayek">Trayek</string>
+    <string name="text_header_jenis_mikrolet">JENIS MIKROLET MALANG</string>
+    <string name="text_posisi_pengguna">Posisi Pengguna</string>
+    <string name="text_cari_angkot">Cari Angkot</string>
+    <string name="text_mikrolet_malang">MIKROLET MALANG</string>
+    <string name="text_help">Help</string>
 
     <!--<string name="url_kml">http://www.google.com/maps/d/kml?forcekml=1&mid=14vAcJsV3l9hx1x6LTk7YuzmgviY</string>-->
 
