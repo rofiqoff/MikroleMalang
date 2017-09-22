@@ -41,6 +41,6 @@
     <string name="text_mikrolet_malang">MIKROLET MALANG</string>
     <string name="text_help">Help</string>
 
-    <!--<string name="url_kml">http://www.google.com/maps/d/kml?forcekml=1&mid=14vAcJsV3l9hx1x6LTk7YuzmgviY</string>-->
+    <string name="text_posisi_sama">Posisi Awal dan Tujuan yang anda masukkan berada di posisi yang sama.</string>
 
 </resources>

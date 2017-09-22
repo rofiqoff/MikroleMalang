@@ -41,6 +41,8 @@ public class JalurAngkotModel {
         String kode_mikrolet;
         String lat_jalur;
         String long_jalur;
+        String nama_jalan;
+        String kode_jalur;
 
         public String getId_jalur() {
             return id_jalur;
@@ -80,6 +82,22 @@ public class JalurAngkotModel {
 
         public void setLong_jalur(String long_jalur) {
             this.long_jalur = long_jalur;
+        }
+
+        public String getNama_jalan() {
+            return nama_jalan;
+        }
+
+        public void setNama_jalan(String nama_jalan) {
+            this.nama_jalan = nama_jalan;
+        }
+
+        public String getKode_jalur() {
+            return kode_jalur;
+        }
+
+        public void setKode_jalur(String kode_jalur) {
+            this.kode_jalur = kode_jalur;
         }
     }
 }

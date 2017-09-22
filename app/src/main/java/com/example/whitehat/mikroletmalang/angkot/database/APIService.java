@@ -3,6 +3,7 @@ package com.example.whitehat.mikroletmalang.angkot.database;
 import com.example.whitehat.mikroletmalang.angkot.database.model.AngkotAGModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.AngkotALModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.AngkotLGModel;
+import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkot;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkotModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JenisAngkotModel;
 
@@ -31,6 +32,9 @@ public interface APIService {
 
     @GET("jalur_angkot.php")
     Call<JalurAngkotModel> jalurAngkot();
+
+    @GET("jalur.php")
+    Call<JalurAngkot> jalur();
 
     class Factory {
         public static APIService create() {

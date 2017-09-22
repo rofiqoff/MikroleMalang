@@ -5,4 +5,7 @@
     <color name="colorAccent">#afafaf</color>
 
     <color name="bg_layout">#cfd8dc</color>
+    <color name="odd">#eee</color>
+    <color name="even">#fff</color>
+    <color name="devider">#ccc</color>
 </resources>
