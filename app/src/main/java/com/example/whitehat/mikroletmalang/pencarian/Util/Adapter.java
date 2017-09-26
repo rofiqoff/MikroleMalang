@@ -16,10 +16,6 @@ import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkot;
 
 import java.util.ArrayList;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 /**
  * Created by rofiqoff on 9/21/17.
  */
@@ -29,21 +25,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     private static final String TAG = "AdapterLOG";
     Activity activity;
     ArrayList<JalurAngkot.Jalur> resultList;
-    int layout;
 
     APIService apiService;
 
-    public Adapter(Activity activity, ArrayList<JalurAngkot.Jalur> jalurs, int layout, APIService apiService) {
+    public Adapter(Activity activity, ArrayList<JalurAngkot.Jalur> jalurs, APIService apiService) {
         this.activity = activity;
         this.resultList = jalurs;
-        this.layout = layout;
 
         this.apiService = apiService;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(layout, parent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_row_alamat, parent, false);
         return new ViewHolder(view);
     }
 
@@ -82,10 +76,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
-                ArrayList<JalurAngkot.Jalur> queryResults = new ArrayList<>();
-                if (constraint != null && constraint.length() > 0) {
-                    queryResults = autocomplete();
-                }
+                ArrayList queryResults = new ArrayList<>();
+//                if (constraint != null && constraint.length() > 0) {
+//                    queryResults = autocomplete();
+//                }
 
                 filterResults.values = queryResults;
                 filterResults.count = queryResults.size();
@@ -108,36 +102,32 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         return filter;
     }
 
-    public ArrayList autocomplete() {
-
-        final Call<JalurAngkot> jalur = apiService.jalur();
-        jalur.enqueue(new Callback<JalurAngkot>() {
-            @Override
-            public void onResponse(Call<JalurAngkot> call, Response<JalurAngkot> response) {
-                if (response.isSuccessful()) {
-                    resultList = new ArrayList<JalurAngkot.Jalur>(response.body().getJalur());
-
-                    JalurAngkot jalurAngkot = response.body();
-
-                    Log.d(TAG, "Response Successful " + jalurAngkot.toString());
-                    Log.d(TAG, "Response Code " + response.code());
-
-                } else {
-                    Log.d(TAG, "Response Not Successful " + response.body().toString());
-                    Log.d(TAG, "Response Code " + response.code());
-                }
-//                adapterPosisiAwal = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat);
-//                adapterPosisiAkhir = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat);
-//                recyclerViewJalurAwal.setAdapter(adapterPosisiAwal);
-//                recyclerViewJalurAkhir.setAdapter(adapterPosisiAkhir);
-            }
-
-            @Override
-            public void onFailure(Call<JalurAngkot> call, Throwable t) {
-                Log.e(TAG, "Kesalahan jaringan : " + t.getMessage());
-            }
-        });
-
-        return resultList;
-    }
+//    public ArrayList autocomplete() {
+//
+//        final Call<JalurAngkot> jalur = apiService.jalur();
+//        jalur.enqueue(new Callback<JalurAngkot>() {
+//            @Override
+//            public void onResponse(Call<JalurAngkot> call, Response<JalurAngkot> response) {
+//                if (response.isSuccessful()) {
+//                    resultList = new ArrayList<JalurAngkot.Jalur>(response.body().getJalur());
+//
+//                    JalurAngkot jalurAngkot = response.body();
+//
+//                    Log.d(TAG, "Response Successful " + jalurAngkot.toString());
+//                    Log.d(TAG, "Response Code " + response.code());
+//
+//                } else {
+//                    Log.d(TAG, "Response Not Successful " + response.body().toString());
+//                    Log.d(TAG, "Response Code " + response.code());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JalurAngkot> call, Throwable t) {
+//                Log.e(TAG, "Kesalahan jaringan : " + t.getMessage());
+//            }
+//        });
+//
+//        return resultList;
+//    }
 }

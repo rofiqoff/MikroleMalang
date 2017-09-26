@@ -130,12 +130,6 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         recyclerViewJalurAwal.setHasFixedSize(true);
         recyclerViewJalurAkhir.setHasFixedSize(true);
 
-        adapterPosisiAwal = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat, apiService);
-        adapterPosisiAkhir = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat, apiService);
-
-        recyclerViewJalurAkhir.setAdapter(adapterPosisiAkhir);
-        recyclerViewJalurAwal.setAdapter(adapterPosisiAwal);
-
         closeAwal = (ImageButton) findViewById(R.id.clear_awal);
         closeAkhir = (ImageButton) findViewById(R.id.clear_tujuan);
 
@@ -196,7 +190,6 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
                     });
 
                     recyclerViewJalurAkhir.setVisibility(View.VISIBLE);
-
                     adapterPosisiAkhir.getFilter().filter(s.toString());
 
                 } else {
@@ -217,10 +210,10 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         apiService = APIService.Factory.create();
         geocoderReceiver = new GeocoderIntentService();
 
-//        jalur();
-//        getAngkotAL();
-//        getAngkotAG();
-//        getAngkotLG();
+        jalur();
+        getAngkotAL();
+        getAngkotAG();
+        getAngkotLG();
 
     }
 
@@ -351,15 +344,46 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void jalur() {
+//        final Call<JalurAngkot> jalur = apiService.jalur();
+//        jalur.enqueue(new Callback<JalurAngkot>() {
+//            @Override
+//            public void onResponse(Call<JalurAngkot> call, Response<JalurAngkot> response) {
+//                jalurs = new ArrayList<JalurAngkot.Jalur>(response.body().getJalur());
+//                adapterPosisiAwal = new Adapter(CariAngkotActivity.this, jalurs, apiService);
+//                adapterPosisiAkhir = new Adapter(CariAngkotActivity.this, jalurs, apiService);
+//                recyclerViewJalurAwal.setAdapter(adapterPosisiAwal);
+//                recyclerViewJalurAkhir.setAdapter(adapterPosisiAkhir);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JalurAngkot> call, Throwable t) {
+//                Log.e(TAG, "Kesalahan jaringan : " + t.getMessage());
+//            }
+//        });
+
         final Call<JalurAngkot> jalur = apiService.jalur();
         jalur.enqueue(new Callback<JalurAngkot>() {
             @Override
             public void onResponse(Call<JalurAngkot> call, Response<JalurAngkot> response) {
-                jalurs = new ArrayList<JalurAngkot.Jalur>(response.body().getJalur());
-                adapterPosisiAwal = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat, apiService);
-                adapterPosisiAkhir = new Adapter(CariAngkotActivity.this, jalurs, R.layout.item_row_alamat, apiService);
-                recyclerViewJalurAwal.setAdapter(adapterPosisiAwal);
-                recyclerViewJalurAkhir.setAdapter(adapterPosisiAkhir);
+                if (response.isSuccessful()) {
+                    jalurs = new ArrayList<JalurAngkot.Jalur>(response.body().getJalur());
+
+                    adapterPosisiAwal = new Adapter(CariAngkotActivity.this, jalurs, apiService);
+                    adapterPosisiAkhir = new Adapter(CariAngkotActivity.this, jalurs, apiService);
+
+                    recyclerViewJalurAkhir.setAdapter(adapterPosisiAkhir);
+                    recyclerViewJalurAwal.setAdapter(adapterPosisiAwal);
+
+                    JalurAngkot jalurAngkot = response.body();
+
+
+                    Log.d(TAG, "Response Successful " + jalurAngkot.toString());
+                    Log.d(TAG, "Response Code " + response.code());
+
+                } else {
+                    Log.d(TAG, "Response Not Successful " + response.body().toString());
+                    Log.d(TAG, "Response Code " + response.code());
+                }
             }
 
             @Override
