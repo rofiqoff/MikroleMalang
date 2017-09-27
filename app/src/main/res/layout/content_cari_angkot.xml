@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/text_posisi_awal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/text_posisi_akhir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

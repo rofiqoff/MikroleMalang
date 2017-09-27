@@ -6,6 +6,7 @@ import com.example.whitehat.mikroletmalang.angkot.database.model.AngkotLGModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkot;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JalurAngkotModel;
 import com.example.whitehat.mikroletmalang.angkot.database.model.JenisAngkotModel;
+import com.example.whitehat.mikroletmalang.angkot.database.model.KodeMirolet;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -35,6 +36,9 @@ public interface APIService {
 
     @GET("jalur.php")
     Call<JalurAngkot> jalur();
+
+    @GET("kode_jalur_angkot.php")
+    Call<KodeMirolet> kodeJalur();
 
     class Factory {
         public static APIService create() {
