@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#cfd8dc"
-    tools:context="com.example.whitehat.mikroletmalang.SplashScreen">
+    tools:context="com.example.whitehat.mikroletmalang.activity.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView2"

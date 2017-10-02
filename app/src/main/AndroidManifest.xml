@@ -29,7 +29,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".activity.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,33 +37,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.MainActivity" android:screenOrientation="portrait" />
         <activity
-            android:name=".angkot.JenisAngkot"
+            android:name=".activity.JenisAngkot"
             android:label="@string/title_activity_jenis_angkot"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".pencarian.PencarianRute"
+            android:name=".activity.PencarianRute"
             android:label="@string/title_activity_pencarian_rute"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".help.Help"
+            android:name=".activity.Help"
             android:label="@string/title_activity_help"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".about.AboutApp"
+            android:name=".activity.AboutApp"
             android:label="@string/title_activity_about"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".angkot.detail.DetailJenis"
+            android:name=".activity.DetailJenis"
             android:label="@string/title_activity_detail_jenis"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
@@ -73,19 +73,19 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".map.MapsActivity"
+            android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".pencarian.PosisiPenggunaActivity"
+            android:name=".activity.PosisiPenggunaActivity"
             android:label="@string/title_activity_posisi_pengguna"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".pencarian.CariAngkotActivity"
+            android:name=".activity.CariAngkotActivity"
             android:label="@string/title_activity_cari_angkot"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme"

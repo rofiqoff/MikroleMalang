@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.whitehat.mikroletmalang.angkot.JenisAngkot">
+    tools:context="com.example.whitehat.mikroletmalang.activity.JenisAngkot">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

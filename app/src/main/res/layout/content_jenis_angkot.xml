@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.whitehat.mikroletmalang.angkot.JenisAngkot"
+    tools:context="com.example.whitehat.mikroletmalang.activity.JenisAngkot"
     tools:showIn="@layout/activity_jenis_angkot">
 
     <TextView
