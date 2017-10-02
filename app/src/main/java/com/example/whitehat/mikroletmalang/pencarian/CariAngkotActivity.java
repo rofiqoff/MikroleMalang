@@ -97,8 +97,6 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
 
     private float downX, downY, upX, upY;
 
-    String namaAngkot = "";
-
     public static final String TAG = "CariAngkotLOG";
 
     private RecyclerView recyclerViewJalurAwal, recyclerViewJalurAkhir;
@@ -556,348 +554,12 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         hitungAlgoritma.algoritmaPencarian();
     }
 
-//    public void algoritmaPencarian(String Fi, String Fj, String startPoint_Dn, String endPoint_DN, String namaJalanAwal, String namaJalanTujuan, String angkot, String angkot2) {
-//
-//        int i = 0;
-//        int j = 0;
-//
-//        if (Fi.equalsIgnoreCase("F1")) {
-//            i = 0;
-//        } else if (Fi.equalsIgnoreCase("F2")) {
-//            i = 1;
-//        } else if (Fi.equalsIgnoreCase("F3")) {
-//            i = 2;
-//        } else if (Fi.equalsIgnoreCase("F4")) {
-//            i = 3;
-//        } else if (Fi.equalsIgnoreCase("F5")) {
-//            i = 4;
-//        } else if (Fi.equalsIgnoreCase("F6")) {
-//            i = 5;
-//        } else if (Fi.equalsIgnoreCase("F7")) {
-//            i = 6;
-//        } else if (Fi.equalsIgnoreCase("F8")) {
-//            i = 7;
-//        } else if (Fi.equalsIgnoreCase("F9")) {
-//            i = 8;
-//        } else if (Fi.equalsIgnoreCase("F10")) {
-//            i = 9;
-//        } else if (Fi.equalsIgnoreCase("F11")) {
-//            i = 10;
-//        } else if (Fi.equalsIgnoreCase("F12")) {
-//            i = 11;
-//        } else if (Fi.equalsIgnoreCase("F13")) {
-//            i = 12;
-//        } else if (Fi.equalsIgnoreCase("F14")) {
-//            i = 13;
-//        } else if (Fi.equalsIgnoreCase("F15")) {
-//            i = 14;
-//        } else if (Fi.equalsIgnoreCase("F16")) {
-//            i = 15;
-//        } else if (Fi.equalsIgnoreCase("F17")) {
-//            i = 16;
-//        } else if (Fi.equalsIgnoreCase("F18")) {
-//            i = 17;
-//        } else if (Fi.equalsIgnoreCase("F19")) {
-//            i = 18;
-//        } else if (Fi.equalsIgnoreCase("F20")) {
-//            i = 19;
-//        } else if (Fi.equalsIgnoreCase("F21")) {
-//            i = 20;
-//        } else if (Fi.equalsIgnoreCase("F22")) {
-//            i = 21;
-//        } else if (Fi.equalsIgnoreCase("F23")) {
-//            i = 22;
-//        } else if (Fi.equalsIgnoreCase("F24")) {
-//            i = 23;
-//        } else if (Fi.equalsIgnoreCase("F25")) {
-//            i = 24;
-//        } else if (Fi.equalsIgnoreCase("F26")) {
-//            i = 25;
-//        } else if (Fi.equalsIgnoreCase("F27")) {
-//            i = 26;
-//        } else if (Fi.equalsIgnoreCase("F28")) {
-//            i = 27;
-//        } else if (Fi.equalsIgnoreCase("F29")) {
-//            i = 28;
-//        } else if (Fi.equalsIgnoreCase("F30")) {
-//            i = 29;
-//        } else if (Fi.equalsIgnoreCase("F31")) {
-//            i = 30;
-//        } else if (Fi.equalsIgnoreCase("F32")) {
-//            i = 31;
-//        } else if (Fi.equalsIgnoreCase("F33")) {
-//            i = 32;
-//        } else if (Fi.equalsIgnoreCase("F34")) {
-//            i = 33;
-//        } else if (Fi.equalsIgnoreCase("F35")) {
-//            i = 34;
-//        } else if (Fi.equalsIgnoreCase("F36")) {
-//            i = 35;
-//        } else if (Fi.equalsIgnoreCase("F37")) {
-//            i = 36;
-//        } else if (Fi.equalsIgnoreCase("F38")) {
-//            i = 37;
-//        } else if (Fi.equalsIgnoreCase("F39")) {
-//            i = 38;
-//        } else if (Fi.equalsIgnoreCase("F40")) {
-//            i = 39;
-//        } else if (Fi.equalsIgnoreCase("F41")) {
-//            i = 40;
-//        } else if (Fi.equalsIgnoreCase("F42")) {
-//            i = 41;
-//        } else if (Fi.equalsIgnoreCase("F43")) {
-//            i = 42;
-//        } else if (Fi.equalsIgnoreCase("F44")) {
-//            i = 43;
-//        } else if (Fi.equalsIgnoreCase("F45")) {
-//            i = 44;
-//        } else if (Fi.equalsIgnoreCase("F46")) {
-//            i = 45;
-//        } else if (Fi.equalsIgnoreCase("F47")) {
-//            i = 46;
-//        } else if (Fi.equalsIgnoreCase("F48")) {
-//            i = 47;
-//        } else if (Fi.equalsIgnoreCase("F49")) {
-//            i = 48;
-//        } else if (Fi.equalsIgnoreCase("F50")) {
-//            i = 49;
-//        } else if (Fi.equalsIgnoreCase("F51")) {
-//            i = 50;
-//        } else if (Fi.equalsIgnoreCase("F52")) {
-//            i = 51;
-//        } else if (Fi.equalsIgnoreCase("F53")) {
-//            i = 52;
-//        } else if (Fi.equalsIgnoreCase("F54")) {
-//            i = 53;
-//        } else if (Fi.equalsIgnoreCase("F55")) {
-//            i = 54;
-//        }
-//
-//        if (Fj.equalsIgnoreCase("F1")) {
-//            j = 0;
-//        } else if (Fj.equalsIgnoreCase("F2")) {
-//            j = 1;
-//        } else if (Fj.equalsIgnoreCase("F3")) {
-//            j = 2;
-//        } else if (Fj.equalsIgnoreCase("F4")) {
-//            j = 3;
-//        } else if (Fj.equalsIgnoreCase("F5")) {
-//            j = 4;
-//        } else if (Fj.equalsIgnoreCase("F6")) {
-//            j = 5;
-//        } else if (Fj.equalsIgnoreCase("F7")) {
-//            j = 6;
-//        } else if (Fj.equalsIgnoreCase("F8")) {
-//            j = 7;
-//        } else if (Fj.equalsIgnoreCase("F9")) {
-//            j = 8;
-//        } else if (Fj.equalsIgnoreCase("F10")) {
-//            j = 9;
-//        } else if (Fj.equalsIgnoreCase("F11")) {
-//            j = 10;
-//        } else if (Fj.equalsIgnoreCase("F12")) {
-//            j = 11;
-//        } else if (Fj.equalsIgnoreCase("F13")) {
-//            j = 12;
-//        } else if (Fj.equalsIgnoreCase("F14")) {
-//            j = 13;
-//        } else if (Fj.equalsIgnoreCase("F15")) {
-//            j = 14;
-//        } else if (Fj.equalsIgnoreCase("F16")) {
-//            j = 15;
-//        } else if (Fj.equalsIgnoreCase("F17")) {
-//            j = 16;
-//        } else if (Fj.equalsIgnoreCase("F18")) {
-//            j = 17;
-//        } else if (Fj.equalsIgnoreCase("F19")) {
-//            j = 18;
-//        } else if (Fj.equalsIgnoreCase("F20")) {
-//            j = 19;
-//        } else if (Fj.equalsIgnoreCase("F21")) {
-//            j = 20;
-//        } else if (Fj.equalsIgnoreCase("F22")) {
-//            j = 21;
-//        } else if (Fj.equalsIgnoreCase("F23")) {
-//            j = 22;
-//        } else if (Fj.equalsIgnoreCase("F24")) {
-//            j = 23;
-//        } else if (Fj.equalsIgnoreCase("F25")) {
-//            j = 24;
-//        } else if (Fj.equalsIgnoreCase("F26")) {
-//            j = 25;
-//        } else if (Fj.equalsIgnoreCase("F27")) {
-//            j = 26;
-//        } else if (Fj.equalsIgnoreCase("F28")) {
-//            j = 27;
-//        } else if (Fj.equalsIgnoreCase("F29")) {
-//            j = 28;
-//        } else if (Fj.equalsIgnoreCase("F30")) {
-//            j = 29;
-//        } else if (Fj.equalsIgnoreCase("F31")) {
-//            j = 30;
-//        } else if (Fj.equalsIgnoreCase("F32")) {
-//            j = 31;
-//        } else if (Fj.equalsIgnoreCase("F33")) {
-//            j = 32;
-//        } else if (Fj.equalsIgnoreCase("F34")) {
-//            j = 33;
-//        } else if (Fj.equalsIgnoreCase("F35")) {
-//            j = 34;
-//        } else if (Fj.equalsIgnoreCase("F36")) {
-//            j = 35;
-//        } else if (Fj.equalsIgnoreCase("F37")) {
-//            j = 36;
-//        } else if (Fj.equalsIgnoreCase("F38")) {
-//            j = 37;
-//        } else if (Fj.equalsIgnoreCase("F39")) {
-//            j = 38;
-//        } else if (Fj.equalsIgnoreCase("F40")) {
-//            j = 39;
-//        } else if (Fj.equalsIgnoreCase("F41")) {
-//            j = 40;
-//        } else if (Fj.equalsIgnoreCase("F42")) {
-//            j = 41;
-//        } else if (Fj.equalsIgnoreCase("F43")) {
-//            j = 42;
-//        } else if (Fj.equalsIgnoreCase("F44")) {
-//            j = 43;
-//        } else if (Fj.equalsIgnoreCase("F45")) {
-//            j = 44;
-//        } else if (Fj.equalsIgnoreCase("F46")) {
-//            j = 45;
-//        } else if (Fj.equalsIgnoreCase("F47")) {
-//            j = 46;
-//        } else if (Fj.equalsIgnoreCase("F48")) {
-//            j = 47;
-//        } else if (Fj.equalsIgnoreCase("F49")) {
-//            j = 48;
-//        } else if (Fj.equalsIgnoreCase("F50")) {
-//            j = 49;
-//        } else if (Fj.equalsIgnoreCase("F51")) {
-//            j = 50;
-//        } else if (Fj.equalsIgnoreCase("F52")) {
-//            j = 51;
-//        } else if (Fj.equalsIgnoreCase("F53")) {
-//            j = 52;
-//        } else if (Fj.equalsIgnoreCase("F54")) {
-//            j = 53;
-//        } else if (Fj.equalsIgnoreCase("F55")) {
-//            j = 54;
-//        }
-//
-//        int[][] data = {
-//                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 1, 1, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-//                {1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0}
-//        };
-//
-//        int value = 0;
-//
-//        for (int baris = 0; baris < data.length; baris++) {
-//            for (int kolom = 0; kolom < data[baris].length; kolom++) {
-//                value = data[i][j];
-//            }
-//        }
-//
-//        if (BuildConfig.DEBUG) {
-//            Log.d("Log matrik i int : ", String.valueOf(i));
-//            Log.d("Log matrik j int : ", String.valueOf(j));
-//            Log.d("Log value : ", String.valueOf(value));
-//            Log.d("Log angkot : ", angkot);
-//            Log.d("Log jalan awal : ", namaJalanAwal);
-//            Log.d("Log jalan akhir : ", namaJalanTujuan);
-//            Log.d("Log DN : ", startPoint_Dn);
-//            Log.d("Log DN : ", endPoint_DN);
-//        }
-//
-//        if (angkot.equalsIgnoreCase("M1") && angkot2.equalsIgnoreCase("M1")) {
-//            namaAngkot = "AL";
-//        } else if (angkot.equalsIgnoreCase("M2") && angkot2.equalsIgnoreCase("M2")) {
-//            namaAngkot = "LG";
-//        } else if (angkot.equalsIgnoreCase("M3") && angkot2.equalsIgnoreCase("M3")) {
-//            namaAngkot = "AG";
-//        }
-//
-//        if (i == j) {
-//            hasil.setVisibility(View.VISIBLE);
-//            textHasil.setText(getString(R.string.text_posisi_sama));
-//        } else if (value == 1) {
-//            if (startPoint_Dn.equalsIgnoreCase(endPoint_DN)) {
-//                hasil.setVisibility(View.VISIBLE);
-//                textHasil.setText("Untuk jalur dari " + namaJalanAwal + " ke " + namaJalanTujuan + ", Anda bisa memilih Angkot " + namaAngkot);
-//            } else {
-//                if (BuildConfig.DEBUG) {
-//                    Log.e("Log DN", "DN tidak ada");
-//                }
-//            }
-//        } else if (value == 2) {
-//
-//            Log.e("Log Value", "Value adalah 2");
-//
-//            if ((i == 1) && (j == 1)) {
-//                int m1;
-//
-//            }
-//
-//        }
-
-//    }
-
     public class AdapterAwal {
         Context context;
         double latAwal, lngAwal;
         String namaJalanSatu;
         String nodeSatu;
+        String namaAngkotSatu;
 
         public AdapterAwal(Context context, double latAwal, double lngAwal, String namaJalan, String node) {
             this.context = context;
@@ -918,6 +580,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         double latAkhir, lngAkhir;
         String namaJalanDua;
         String nodeDua;
+        String namaAngkotDua;
 
         public AdapterAkhir(double latAkhir, double lngAkhir, String namaJalan, String node, Context context) {
             this.context = context;
@@ -938,6 +601,7 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
         double latAwal, lngAwal;
         String namaJalanSatu, namaJalanDua;
         String nodeSatu, nodeDua;
+        String namaAngkotSatu, namaAngkotDua;
 
         public Algoritma() {
         }
@@ -1220,6 +884,8 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                             {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                             {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+                            {1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+                            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1261,14 +927,6 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
                         }
                     }
 
-//                    if (angkot.equalsIgnoreCase("M1") && angkot2.equalsIgnoreCase("M1")) {
-//                        namaAngkot = "AL";
-//                    } else if (angkot.equalsIgnoreCase("M2") && angkot2.equalsIgnoreCase("M2")) {
-//                        namaAngkot = "LG";
-//                    } else if (angkot.equalsIgnoreCase("M3") && angkot2.equalsIgnoreCase("M3")) {
-//                        namaAngkot = "AG";
-//                    }
-
                     for (int i = 1; i < kodeJalurs.size(); i++) {
 
                         String nodeJalur = kodeJalurs.get(i).getNode_jalur();
@@ -1282,6 +940,8 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
                         } else if (angkot.equals("M3")) {
                             namaAngkot = "AG";
                         }
+
+                        Log.d(TAG, "nama Angkot : " + namaAngkot);
 
                         if (nodeSatu.equalsIgnoreCase(nodeJalur)) {
                             start_point_dn = dn;
@@ -1305,6 +965,9 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
 
                                 hasil.setVisibility(View.VISIBLE);
                                 textHasil.setText("Untuk jalur dari " + namaJalanSatu + " ke " + namaJalanDua + ", Anda bisa memilih Angkot " + namaAngkot);
+
+                                Log.d(TAG, "nama Angkot : " + namaAngkot);
+
                             } else {
                                 hasil.setVisibility(View.VISIBLE);
                                 textHasil.setText("DN tidak cocok");
@@ -1319,7 +982,9 @@ public class CariAngkotActivity extends AppCompatActivity implements View.OnClic
                             Log.e("Log Value", "Value adalah 2");
 
                             if ((indexNodeStart == 1) && (indexNodeEnd == 1)) {
-                                int m1;
+                                if (nodeJalur == nodeJalur) {
+
+                                }
 
                             }
 

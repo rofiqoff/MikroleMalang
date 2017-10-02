@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -39,14 +40,21 @@ public class JenisAngkot extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Mikrolet Malang");
+        getSupportActionBar().setTitle(getString(R.string.app_name));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleview_angkot);
         model = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayout = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayout);
-        adapter = new RecycleviewAdapterJenisAngkot(this,model);
+        adapter = new RecycleviewAdapterJenisAngkot(this, model);
         recyclerView.setAdapter(adapter);
 
         setdata();
@@ -55,7 +63,7 @@ public class JenisAngkot extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -63,8 +71,7 @@ public class JenisAngkot extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setdata()
-    {
+    private void setdata() {
         String url = Helper.BASE_URL + "tampil-jeni-mikrolet.php";
         Map<String, String> param = new HashMap();
 
@@ -78,18 +85,18 @@ public class JenisAngkot extends AppCompatActivity {
 
         aQuery = new AQuery(this);
         try {
-            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>(){
+            aQuery.progress(progressDialog).ajax(url, param, String.class, new AjaxCallback<String>() {
                 @Override
                 public void callback(String url, String object, AjaxStatus status) {
-                    if (object != null){
+                    if (object != null) {
                         try {
                             JSONObject jsonObject = new JSONObject(object);
                             String result = jsonObject.getString("result");
                             String msg = jsonObject.getString("msg");
 
-                            if (result.equalsIgnoreCase("true")){
+                            if (result.equalsIgnoreCase("true")) {
                                 JSONArray jsonArray = jsonObject.getJSONArray("jenis_mikrolet");
-                                for (int a = 0; a < jsonArray.length(); a++){
+                                for (int a = 0; a < jsonArray.length(); a++) {
                                     JSONObject object1 = jsonArray.getJSONObject(a);
                                     ModelJenisAngkot modelJenisAngkot = new ModelJenisAngkot();
 
@@ -112,7 +119,7 @@ public class JenisAngkot extends AppCompatActivity {
                     }
                 }
             });
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">MikroletMalang</string>
+    <string name="app_name">Angkot Malang</string>
     <string name="title_activity_jenis_angkot">Jenis Angkot</string>
     <string name="title_activity_pencarian_rute">Pencarian Rute</string>
     <string name="title_activity_help">help</string>
     <string name="title_activity_about">Tentang Pembuat</string>
-    <string name="mikrolet_malang">MIKROLET MALANG</string>
+    <string name="mikrolet_malang">Angkot MALANG</string>
     <string name="imdad_rabbani">IMDAD RABBANI</string>
     <string name="teknik_informatika">TEKNIK INFORMATIKA</string>
     <string name="uin_maulana_malik_ibrahim">UIN MAULANA MALIK IBRAHIM</string>
@@ -15,8 +15,8 @@
     <string name="help_rekomendasiMikrolet">Pada menu ini diminta untuk memasukkan jalan yang menjadi tujuan anda. Setelah itu system akan memberikan rekomendasi rute alternatif angkutan umum yang sesuai dengan kemauan user serta akan menampilkan trayek angkutan umumnya</string>
     <string name="help_petunjukPengguna">Pada menu ini, Applikasi akan memberikan informasi petunjuk penggunaan dalam mengoperasikan applikasi ini</string>
     <string name="help_tentangAplikasi">Pada Menu ini berfungsi untuk menampilkan tentang seputar pengembangan aplikasi ini</string>
-    <string name="help_menu_jenis_mikrolet">MENU - JENIS MIKROLET</string>
-    <string name="help_menu_rekomendasi_mikrolet">MENU - REKOMENDASI MIKROLET</string>
+    <string name="help_menu_jenis_mikrolet">MENU - JENIS ANGKOT</string>
+    <string name="help_menu_rekomendasi_mikrolet">MENU - REKOMENDASI ANGKOT</string>
     <string name="help_menu_petunjuk_penggunaan">MENU - PETUNJUK PENGGUNAAN</string>
     <string name="help_menu_tentang_aplikasi">MENU - TENTANG APLIKASI</string>
 
@@ -26,8 +26,8 @@
     <string name="trayek_ag">Terminal Arjosari – Jl. R. Panji Suroso – Jl. Raden Intan – Jl. Jend A. Yani – Jl. Letjen S. Parma – Jl. Letjen Sutuyo – Jl. Jagung Suprapto – Jl. Basuki Rahmat – Merdeka Utara – Jl. Merdeka Timur – Jl. Sukarjowiryor   Panoto – Jl. Pasar Besar – Jl. Sersan Harun – Jl. Prof Moh yamin – Jl. Sartono SH – Jl. Kol Sugiono – Terminal Gadang</string>
     <string name="title_activity_posisi_pengguna">Berdasarkan Posisi Pengguna</string>
     <string name="title_activity_cari_angkot">Berdasarkan Inputan</string>
-    <string name="jenis_mikrolet_malang">Jenis Mikrolet Malang</string>
-    <string name="text_screen">Mikrolet Malang</string>
+    <string name="jenis_mikrolet_malang">Jenis Angkot Malang</string>
+    <string name="text_screen">Angkot Malang</string>
     <string name="image_menu_desc">image menu desc</string>
     <string name="image_logo_desc">image logo desc</string>
     <string name="image_foto_desc">image foto desc</string>
@@ -35,10 +35,10 @@
     <string name="text_tujuan">Tujuan</string>
     <string name="image_icon_desc">image icon desc</string>
     <string name="text_trayek">Trayek</string>
-    <string name="text_header_jenis_mikrolet">JENIS MIKROLET MALANG</string>
+    <string name="text_header_jenis_mikrolet">JENIS ANGKOT MALANG</string>
     <string name="text_posisi_pengguna">Posisi Pengguna</string>
     <string name="text_cari_angkot">Cari Angkot</string>
-    <string name="text_mikrolet_malang">MIKROLET MALANG</string>
+    <string name="text_mikrolet_malang">ANGKOT MALANG</string>
     <string name="text_help">Help</string>
 
     <string name="text_posisi_sama">Posisi Awal dan Tujuan yang anda masukkan berada di posisi yang sama.</string>
